@@ -17,9 +17,9 @@ import airflow
 DAG_ID = os.path.basename(__file__).replace(".pyc", "").replace(".py", "")
 START_DATE = airflow.utils.dates.days_ago(1)
 # How often to Run. @daily - Once a day at Midnight
-SCHEDULE_INTERVAL = "@daily"
+SCHEDULE_INTERVAL = None
 # Who is listed as the owner of this DAG in the Airflow Web Server
-DAG_OWNER_NAME = "operations"
+DAG_OWNER_NAME = "admin"
 # List of email address to send email alerts to if this job fails
 ALERT_EMAIL_ADDRESSES = []
 # Whether the job should delete the logs or not. Included if you want to
