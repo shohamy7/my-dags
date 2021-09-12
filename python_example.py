@@ -9,8 +9,8 @@ from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
 with DAG(
     dag_id='example_python_operator',
     schedule_interval='* * * * *',
-    start_date=datetime(2021, 9, 12, 15, 55, 0),
-    end_time=datetime(2021, 9, 12, 16, 0, 0),
+    start_date=datetime(2021, 9, 12, 15, 57, 0),
+    end_date=datetime(2021, 9, 12, 16, 0, 0),
     catchup=False,
     tags=['example'],
 ) as dag:
