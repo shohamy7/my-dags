@@ -27,7 +27,6 @@ ALERT_EMAIL_ADDRESSES = []
 ENABLE_DELETE = True
 
 default_args = {
-    'owner': DAG_OWNER_NAME,
     'depends_on_past': False,
     'email': ALERT_EMAIL_ADDRESSES,
     'email_on_failure': True,
