@@ -6,11 +6,16 @@ from pprint import pprint
 from airflow import DAG
 from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
 
+default_args = {
+    'owner': 'shoham'
+}
+
 with DAG(
     dag_id='example_python_operator',
     schedule_interval='* * * * *',
     start_date=datetime(2021, 9, 12, 13, 2, 0),
     end_date=datetime(2021, 9, 12, 13, 5, 0),
+    default_args=default_args,
     catchup=False,
     tags=['example'],
 ) as dag:
