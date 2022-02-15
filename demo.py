@@ -41,7 +41,7 @@ with DAG(
 
     def print_candidate_is_a_matmonist(ti: TaskInstance) -> None:
         candidate_random_number = int(ti.xcom_pull(task_ids="select_a_random_number"))
-        print(f'The candidate is a Matmonist, the random number is {candidate_random_number}.'
+        print(f'The candidate is a Matmonist, the random number is {candidate_random_number}. '
               f'He will be a Viking forever!')
 
 
