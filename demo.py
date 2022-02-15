@@ -6,7 +6,7 @@ from airflow.models import TaskInstance
 from airflow.operators.python import PythonOperator, BranchPythonOperator
 
 default_args = {
-    'owner': 'Aman'
+    'owners': 'Aman'
 }
 
 with DAG(
