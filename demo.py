@@ -26,12 +26,12 @@ with DAG(
         return all(num % i for i in range(3, int(math.sqrt(num)) + 1, 2))
 
 
-    def is_candidate_a_mamasnik(ti: TaskInstance) -> bool:
+    def is_candidate_a_mamasnik(ti: TaskInstance) -> str:
         candidate_random_number = int(ti.xcom_pull(task_ids="select_a_random_number"))
         if candidate_random_number == 6 or is_prime(candidate_random_number):
-            return True
+            return 'candidate_a_mamasnik'
         else:
-            return False
+            return 'candidate_a_matmonist'
 
 
     def print_candidate_is_a_mamasnik(ti: TaskInstance) -> None:
