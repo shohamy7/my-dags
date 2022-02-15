@@ -7,7 +7,7 @@ from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.utils.dates import days_ago
 
 default_args = {
-    'owners': 'Aman'
+    'owner': 'Aman'
 }
 
 with DAG(
