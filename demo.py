@@ -4,6 +4,7 @@ import random
 from airflow import DAG
 from airflow.models import TaskInstance
 from airflow.operators.python import PythonOperator, BranchPythonOperator
+from airflow.utils.dates import days_ago
 
 default_args = {
     'owners': 'Aman'
@@ -11,7 +12,8 @@ default_args = {
 
 with DAG(
         dag_id='candidate_recruiter',
-        schedule_interval=None
+        schedule_interval=None,
+        start_date=days_ago(2)
 ) as dag:
     def random_number_between_1_and_20() -> int:
         return random.randint(1, 20)
