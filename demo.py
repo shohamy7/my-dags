@@ -13,6 +13,7 @@ default_args = {
 with DAG(
         dag_id='candidate_recruiter',
         schedule_interval=None,
+        default_args=default_args,
         start_date=days_ago(2)
 ) as dag:
     def random_number_between_1_and_20() -> int:
