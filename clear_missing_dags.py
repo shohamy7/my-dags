@@ -51,7 +51,8 @@ if hasattr(dag, 'catchup'):
 
 
 def clear_missing_dags_fn(**context):
-
+    import socket
+    print(socket.gethostname())
     logging.info("Starting to run Clear Process")
 
     try:
@@ -121,4 +122,5 @@ clear_missing_dags = PythonOperator(
     task_id='clear_missing_dags',
     python_callable=clear_missing_dags_fn,
     provide_context=True,
+    queue='kubernetes',
     dag=dag)
