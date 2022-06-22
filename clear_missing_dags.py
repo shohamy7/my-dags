@@ -106,6 +106,9 @@ def clear_missing_dags_fn(**context):
         "Process will be Deleting " + str(len(entries_to_delete)) + " DAG(s)"
     )
 
+    import time
+    time.sleep(20)
+
     if ENABLE_DELETE:
         logging.info("Performing Delete...")
         for entry in entries_to_delete:
