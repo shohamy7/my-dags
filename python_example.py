@@ -29,6 +29,7 @@ with DAG(
     run_this = PythonOperator(
         task_id='print_the_context',
         python_callable=print_context,
+        queue='kubernetes'
     )
     # [END howto_operator_python]
 
