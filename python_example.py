@@ -23,6 +23,8 @@ with DAG(
     def print_context(ds, **kwargs):
         """Print the Airflow context and ds variable from the context."""
         pprint(kwargs)
+        from time import sleep
+        sleep(30)
         print(ds)
         return 'Whatever you return gets printed in the logs'
 
