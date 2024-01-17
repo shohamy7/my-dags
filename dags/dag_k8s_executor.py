@@ -27,7 +27,7 @@ def print_greetings(try_number: int, **kwargs):
 
 # Define the DAG object with the specified parameters
 dag = DAG(
-    'example_k8s_executor_dag',
+    dag_id='example_k8s_executor_dag',
     default_args=default_args,
     schedule_interval=None,  # This DAG is triggered manually
 )
@@ -38,15 +38,17 @@ print_greeting_task = PythonOperator(
     python_callable=print_greetings,
     executor_config={
         "pod_override": k8s.V1Pod(
-            metadata=k8s.V1ObjectMeta(name="base", namespace="hello"),
+            metadata=k8s.V1ObjectMeta(namespace="hello"),
             spec=k8s.V1PodSpec(
-                containers=k8s.V1Container(
-                    name="base",
-                    env=k8s.V1EnvVar(
-                        name="GREETING",
-                        value="Hello World!"
-                    )
-                )
+                containers=[
+                    k8s.V1Container(
+                        name="base",
+                        env=k8s.V1EnvVar(
+                            name="GREETING",
+                            value="Hello World!"
+                        )
+                    ),
+                ]
             )
         )
     },
