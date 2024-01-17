@@ -38,7 +38,7 @@ print_greeting_task = PythonOperator(
     python_callable=print_greetings,
     executor_config={
         "pod_override": k8s.V1Pod(
-            metadata=k8s.V1ObjectMeta(namespace="hello"),
+            metadata=k8s.V1ObjectMeta(name="base", namespace="hello"),
             spec=k8s.V1PodSpec(
                 containers=k8s.V1Container(
                     name="base",
