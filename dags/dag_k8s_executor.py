@@ -43,10 +43,12 @@ print_greeting_task = PythonOperator(
                 containers=[
                     k8s.V1Container(
                         name="base",
-                        env=k8s.V1EnvVar(
-                            name="GREETING",
-                            value="Hello World!"
-                        )
+                        env=[
+                            k8s.V1EnvVar(
+                                name="GREETING",
+                                value="Hello World!"
+                            ),
+                        ]
                     ),
                 ]
             )
