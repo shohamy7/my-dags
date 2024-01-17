@@ -38,7 +38,6 @@ print_greeting_task = PythonOperator(
     python_callable=print_greetings,
     executor_config={
         "pod_override": k8s.V1Pod(
-            metadata=k8s.V1ObjectMeta(namespace="hello"),
             spec=k8s.V1PodSpec(
                 containers=[
                     k8s.V1Container(
@@ -48,7 +47,13 @@ print_greeting_task = PythonOperator(
                                 name="GREETING",
                                 value="Hello World!"
                             ),
-                        ]
+                        ],
+                        resources=k8s.V1ResourceRequirements(
+                            requests={
+                                "cpu": "100000",
+                                "memory": "100000Gi"
+                            }
+                        )
                     ),
                 ]
             )
