@@ -16,10 +16,10 @@ default_args = {
 }
 
 
-def print_greetings(try_number: int, **kwargs):
+def print_greetings(ti, **kwargs):
     import os
     greetings = os.getenv('GREETING', "No greeting")
-    if try_number > 0:
+    if ti.try_number > 0:
         print(f"Greeting: {greetings}")
     else:
         raise Exception("Error!")
@@ -48,18 +48,11 @@ print_greeting_task = PythonOperator(
                                 value="Hello World!"
                             ),
                         ],
-                        resources=k8s.V1ResourceRequirements(
-                            requests={
-                                "cpu": "100000",
-                                "memory": "100000Gi"
-                            }
-                        )
                     ),
                 ]
             )
         )
     },
-    op_kwargs={"try_number": "{{ task_instance.try_number }}"},
     dag=dag,
 )
 
