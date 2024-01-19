@@ -19,6 +19,9 @@ default_args = {
 def print_greetings(ti, **kwargs):
     import os
     greetings = os.getenv('GREETING', "No greeting")
+    print(f"kwargs: {kwargs}")
+    print(f"ti: {ti}")
+    print(f"try number: {ti.try_number}")
     if ti.try_number > 0:
         print(f"Greeting: {greetings}")
     else:
