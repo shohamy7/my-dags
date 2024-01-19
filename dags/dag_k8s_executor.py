@@ -22,7 +22,7 @@ def print_greetings(ti, **kwargs):
     print(f"kwargs: {kwargs}")
     print(f"ti: {ti}")
     print(f"try number: {ti.try_number}")
-    if ti.try_number > 0:
+    if ti.try_number > 1:
         print(f"Greeting: {greetings}")
     else:
         raise Exception("Error!")
