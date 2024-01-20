@@ -31,6 +31,7 @@ for i in range(10):
         dag_id=f'multiple_dag_{i}',
         default_args=default_args,
         schedule_interval="* * * * *",  # This DAG is triggered manually
+        catchup=False,
     ) as dag:
         
         # Define the BashOperator task that prints the greeting to stdout
