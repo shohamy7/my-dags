@@ -25,16 +25,16 @@ def print_greetings(ti, **kwargs):
     print(f"Greeting: {greetings}")
 
 
-# Define the DAG object with the specified parameters
-dag = DAG(
-    dag_id='example_k8s_executor_dag',
-    default_args=default_args,
-    schedule_interval=None,  # This DAG is triggered manually
-)
-
-# Define the BashOperator task that prints the greeting to stdout
-print_greeting_task = PythonOperator(
-    task_id='print_greeting',
-    python_callable=print_greetings,
-    dag=dag,
-)
+for i in range(10):
+    # Define the DAG object with the specified parameters
+    with DAG(
+        dag_id=f'multiple_dag_{i}',
+        default_args=default_args,
+        schedule_interval="* * * * *",  # This DAG is triggered manually
+    ) as dag:
+        
+        # Define the BashOperator task that prints the greeting to stdout
+        print_greeting_task = PythonOperator(
+            task_id=f'print_greeting_{i}',
+            python_callable=print_greetings
+        )
