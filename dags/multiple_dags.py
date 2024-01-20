@@ -25,7 +25,7 @@ def print_greetings(ti, **kwargs):
     print(f"Greeting: {greetings}")
 
 
-for i in range(10):
+for i in range(2):
     # Define the DAG object with the specified parameters
     with DAG(
         dag_id=f'multiple_dag_{i}',
