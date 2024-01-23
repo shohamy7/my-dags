@@ -27,15 +27,15 @@ def print_greetings(ti, **kwargs):
 
 for i in range(2):
     # Define the DAG object with the specified parameters
-    with DAG(
-        dag_id=f'multiple_dag_{i}',
-        default_args=default_args,
-        schedule_interval="* * * * *",  # This DAG is triggered manually
-        catchup=False,
-    ) as dag:
+    #with DAG(
+    #    dag_id=f'multiple_dag_{i}',
+    #    default_args=default_args,
+    #    schedule_interval="* * * * *",  # This DAG is triggered manually
+    #    catchup=False,
+    #) as dag:
         
         # Define the BashOperator task that prints the greeting to stdout
-        print_greeting_task = PythonOperator(
-            task_id=f'print_greeting_{i}',
-            python_callable=print_greetings
-        )
+    #    print_greeting_task = PythonOperator(
+    #        task_id=f'print_greeting_{i}',
+    #        python_callable=print_greetings
+    #    )
